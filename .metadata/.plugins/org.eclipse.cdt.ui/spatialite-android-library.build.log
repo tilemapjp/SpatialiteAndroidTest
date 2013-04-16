@@ -4,9 +4,9 @@
 ndk-build -j8 clean 
 Clean: geos [armeabi]
 Clean: gnustl_shared [armeabi]
-Clean: gnustl_static [armeabi]
 Clean: jsqlite [armeabi]
 Clean: proj [armeabi]
+Clean: gnustl_static [armeabi]
 Clean: spatialite [armeabi]
 Clean: sqlite [armeabi]
 Clean: geos [armeabi-v7a]

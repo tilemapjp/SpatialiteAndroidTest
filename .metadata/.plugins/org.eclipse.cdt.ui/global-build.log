@@ -59,3 +59,57 @@ Clean: spatialite [x86]
 Clean: sqlite [x86]
 
 **** Build Finished ****
+
+**** Clean-only build of configuration Debug for project spatialite-android-library ****
+
+ndk-build -j8 clean 
+Clean: geos [armeabi]
+Clean: gnustl_shared [armeabi]
+Clean: gnustl_static [armeabi]
+Clean: jsqlite [armeabi]
+Clean: proj [armeabi]
+Clean: spatialite [armeabi]
+Clean: sqlite [armeabi]
+Clean: geos [armeabi-v7a]
+Clean: gnustl_shared [armeabi-v7a]
+Clean: gnustl_static [armeabi-v7a]
+Clean: jsqlite [armeabi-v7a]
+Clean: proj [armeabi-v7a]
+Clean: spatialite [armeabi-v7a]
+Clean: sqlite [armeabi-v7a]
+Clean: geos [x86]
+Clean: gnustl_shared [x86]
+Clean: gnustl_static [x86]
+Clean: jsqlite [x86]
+Clean: proj [x86]
+Clean: sqlite [x86]
+Clean: spatialite [x86]
+
+**** Build Finished ****
+
+**** Clean-only build of configuration Debug for project spatialite-android-library ****
+
+ndk-build -j8 clean 
+Clean: geos [armeabi]
+Clean: gnustl_shared [armeabi]
+Clean: jsqlite [armeabi]
+Clean: proj [armeabi]
+Clean: gnustl_static [armeabi]
+Clean: spatialite [armeabi]
+Clean: sqlite [armeabi]
+Clean: geos [armeabi-v7a]
+Clean: gnustl_shared [armeabi-v7a]
+Clean: gnustl_static [armeabi-v7a]
+Clean: jsqlite [armeabi-v7a]
+Clean: proj [armeabi-v7a]
+Clean: spatialite [armeabi-v7a]
+Clean: sqlite [armeabi-v7a]
+Clean: geos [x86]
+Clean: gnustl_shared [x86]
+Clean: gnustl_static [x86]
+Clean: jsqlite [x86]
+Clean: proj [x86]
+Clean: spatialite [x86]
+Clean: sqlite [x86]
+
+**** Build Finished ****

@@ -10,6 +10,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,55 +57,90 @@ public class MainFragment extends SherlockFragment {
 		
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Test\n\n");
+		sb.append("<b>Test queries for SpatialIndex support</b><br/><br/>");
+		
+		File spatialDbFile = new File(this.getActivity().getFilesDir() + "/" + this.getActivity().getString(R.string.test_db));            
+		vDebug("[onCreateView] ----- Database file used: " + spatialDbFile.getAbsolutePath());
+		
+		Database db = new jsqlite.Database();
 		
 		try {
-			
-			File spatialDbFile = new File(this.getActivity().getFilesDir() + "/" + this.getActivity().getString(R.string.test_db));            
-			vDebug("[onCreateView] ----- Database file used: " + spatialDbFile.getAbsolutePath());
-			
-			Database db = new jsqlite.Database();
-			
 			db.open(spatialDbFile.getAbsolutePath(), jsqlite.Constants.SQLITE_OPEN_READWRITE
-                    | jsqlite.Constants.SQLITE_OPEN_CREATE);
-			
-			String query = "Select count(*) from idx_regions_Geometry";
-			sb.append("Query: " + query + "\n");
-			
-         // Check index
-			Stmt stmt2 = db.prepare(query);
-			if (stmt2.step()) {
-				wDebug("[onCreateView] ----- Count: " + stmt2.column_string(0));
-				sb.append("Result: " + stmt2.column_string(0) + "\n");
-			} else {
-				sb.append("No results");
+                | jsqlite.Constants.SQLITE_OPEN_CREATE);
+		
+		} catch (Exception e) {
+			sb.append("Exception: " + e + "<br/>");
+			eDebug("[onCreateView] Exception: " + e);
+			e.printStackTrace();
+		}
+		
+		String[] queries = {
+				"SELECT spatialite_version()",
+				"SELECT proj4_version()",
+				"SELECT geos_version()",
+				"SELECT lwgeom_version()",
+				"SELECT count(*) FROM regions",
+				"SELECT count(*) FROM idx_regions_Geometry", 
+				"SELECT count(*) FROM regions WHERE pk_uid IN (SELECT rowid FROM SpatialIndex WHERE \"f_table_name\"='regions' AND " +
+						"\"f_geometry_column\"='Geometry' AND \"search_frame\" = " +
+						"GeomFromEWKT(\"SRID=4326;POLYGON((12.02 41.52,19.38 42.70,19.38 35.70,11.30 36.06,12.02 41.52))\"))"
+					 };
+		
+		for (int i = 0; i < queries.length; i++ ) {
+			try {
+				
+				//String query = "Select count(*) from idx_regions_Geometry";
+				String query = queries[i];
+				sb.append("<i>Query</i>: " + query + "<br/>");
+				wDebug("[onCreateView] ----- Query: " + query);
+				
+				Stmt stmt = db.prepare(query);
+				if (stmt.step()) {
+					wDebug("[onCreateView] ----- Count: " + stmt.column_string(0));
+					sb.append("<i>Result</i>: " + stmt.column_string(0) + "<br/>");
+				} else {
+					sb.append("<i>No results</i><br/>");
+				}
+				
+				stmt.close();
+			} catch (Exception e) {
+				sb.append("<b>Exception</b>: " + e + "<br/>");
+				eDebug("[onCreateView] Exception: " + e);
+				e.printStackTrace();
+				
 			}
-			stmt2.close();
-			
-			query = "SELECT count(*) FROM regions WHERE pk_uid IN (SELECT rowid FROM SpatialIndex WHERE \"f_table_name\"='regions' AND " +
+			sb.append("<br/>");
+		}
+		
+		/*
+		try {
+			String query = "SELECT count(*) FROM regions WHERE pk_uid IN (SELECT rowid FROM SpatialIndex WHERE \"f_table_name\"='regions' AND " +
 					"\"f_geometry_column\"='Geometry' AND \"search_frame\" = GeomFromEWKT(\"SRID=4326;POLYGON((12.02 41.52,19.38 42.70,19.38 35.70,11.30 36.06,12.02 41.52))\"))";
 			wDebug("[onCreateView] ----- Query: " + query);
+			sb.append("<i>Query</i>: " + query + "<br/>");
 			
-			stmt2 = db.prepare(query);
-			if (stmt2.step()) {
-				wDebug("[onCreateView] ----- Count: " + stmt2.column_string(0));
-				sb.append(stmt2.column_string(0));
+			Stmt stmt = db.prepare(query);
+			if (stmt.step()) {
+				wDebug("[onCreateView] ----- Count: " + stmt.column_string(0));
+				sb.append("<i>Result</i>: " + stmt.column_string(0) + "<br/>");
 			} else {
-				sb.append("No results");
+				sb.append("<i>No results</i><br/>");
 			}
-			stmt2.close();
+			stmt.close();
 			
 		} catch (Exception e) {
+			sb.append("<b>Exception</b>: " + e + "<br/>");
 			eDebug("[onCreateView] Exception: " + e);
 			e.printStackTrace();
 			
 		}
-		
+		*/
+			
 		View view = null;
 		try {
 			view = inflater.inflate(R.layout.mainfragment, container, false);
 			TextView textview = (TextView) view.findViewById(R.id.textview);
-			textview.setText(sb);
+			textview.setText(Html.fromHtml(sb.toString()));
 			
 		} catch (Exception e) {
 			eDebug("[onCreateView] Exception: " + e);
