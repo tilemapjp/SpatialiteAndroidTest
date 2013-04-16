@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.actionbarsherlock.app.SherlockFragmentActivity"/>
+<fullyQualifiedTypeName name="com.actionbarsherlock.view.Menu"/>
+<fullyQualifiedTypeName name="com.actionbarsherlock.app.SherlockFragment"/>
+<fullyQualifiedTypeName name="it.ldpgis.android.testapp.AssetHelper"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="jsqlite.Database"/>
+<fullyQualifiedTypeName name="jsqlite.Stmt"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentTransaction"/>
+</qualifiedTypeNameHistroy>

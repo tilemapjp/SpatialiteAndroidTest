@@ -1,0 +1,11 @@
+INDEX VERSION 1.126+/home/mondelli/Sviluppo/Android/spatialite-test-workspace/.metadata/.plugins/org.eclipse.jdt.core
+2308319084.index
+526959018.index
+4082908633.index
+2301185422.index
+3469612669.index
+2138691127.index
+2660941367.index
+2697462263.index
+4268459646.index
+2426013806.index
