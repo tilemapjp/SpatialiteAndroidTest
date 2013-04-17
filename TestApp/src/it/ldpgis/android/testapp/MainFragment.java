@@ -79,6 +79,9 @@ public class MainFragment extends SherlockFragment {
 				"SELECT proj4_version()",
 				"SELECT geos_version()",
 				"SELECT lwgeom_version()",
+				"Select checkspatialindex()",
+				"Select createspatialindex('regions','Geometry')",
+				"select checkspatialindex()",
 				"SELECT count(*) FROM regions",
 				"SELECT count(*) FROM idx_regions_Geometry", 
 				"SELECT count(*) FROM regions WHERE pk_uid IN (SELECT rowid FROM SpatialIndex WHERE \"f_table_name\"='regions' AND " +

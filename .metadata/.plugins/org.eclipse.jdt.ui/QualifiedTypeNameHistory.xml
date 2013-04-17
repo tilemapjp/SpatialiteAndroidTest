@@ -6,7 +6,8 @@
 <fullyQualifiedTypeName name="it.ldpgis.android.testapp.AssetHelper"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentTransaction"/>
 <fullyQualifiedTypeName name="jsqlite.Database"/>
 <fullyQualifiedTypeName name="jsqlite.Stmt"/>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentTransaction"/>
+<fullyQualifiedTypeName name="android.text.Html"/>
 </qualifiedTypeNameHistroy>
